@@ -115,13 +115,13 @@ const string ConsoleCommands::moveCursorToBegninningOfNextNLinesDown(const uint8
 // Moves the cursor to the beginning of previous n lines up.
 // `ESC[#F`  ---> moves cursor to the beginning of # lines up.
 const string ConsoleCommands::moveCursorToBeginningOfPreviousNLinesUp(const uint8_t& n) {
-	return string("\033[") + to_string(n) + "F";
+	return format("\033[{}F", n);// string("\033[") + to_string(n) + "F";
 }
 
 // Moves the cursor to column #
 // `ESC[#G`  ---> moves cursor to column #
 const string ConsoleCommands::moveCursorToColumn(const uint8_t& n) {
-	return string("\033[") + to_string(n) + "G";
+	return format("\033[{}G", n);//string("\033[") + to_string(n) + "G";
 }
 
 // Moves the cursor up one line scrolling if needed.
@@ -146,14 +146,14 @@ const string ConsoleCommands::restoreCursorToLastSavedPosition() {
 // `ESC[#A`  ---> moves cursor up # lines.
 const string ConsoleCommands::moveCursorUp(const uint8_t& n)
 {
-	return "\033[" + to_string(n) + "A";
+	return format("\033[{}A", n);//"\033[" + to_string(n) + "A";
 }
 
 // Moves the cursor n lines down.
 // `ESC[#B`  ---> moves cursor down # lines.
 const string ConsoleCommands::moveCursorDown(const uint8_t& n)
 {
-	return "\033[" + to_string(n) + "B";
+	return format("\033[{}B", n);//"\033[" + to_string(n) + "B";
 }
 
 
@@ -162,14 +162,14 @@ const string ConsoleCommands::moveCursorDown(const uint8_t& n)
 const string ConsoleCommands::moveCursorRight(const uint8_t& n)
 {
 
-	return string("\033[") + to_string(n) + "C";
+	return format("\033[{}C", n); //string("\033[") + to_string(n) + "C";
 }
 
 // Moves the cursor n columns left.
 // `ESC[#D`  ---> moves cursor left # columns.
 const string ConsoleCommands::moveCursorLeft(const uint8_t& n)
 {
-	return string("\033[") + to_string(n) + "D";
+	return format("\033[{}D", n); //string("\033[") + to_string(n) + "D";
 }
 
 // Moves the cursor home (0,0).

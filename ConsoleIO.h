@@ -35,21 +35,31 @@ which disables line wrapping. The last character in this escape sequence is a lo
 
 */
 
+#if defined(__linux__) || defined(__APPLE__)
+    #ifndef FMT_HEADER_ONLY
+    #define FMT_HEADER_ONLY
+    #endif
+    #include "fmt/format.h"
+    using namespace fmt;
+
+#elif defined(_WIN32)
+    #include <format>
+    
+#endif
 
 #ifndef ConsoleIO_H
 #define ConsoleIO_H
 
 #include <cstdint>
 #include <string>
-#include <format>
 
 using namespace std;
 
 class ConsoleColor
 {
 private:
-    const ConsoleColor();
-    const ConsoleColor(const ConsoleColor&);
+    ConsoleColor();
+    ConsoleColor(ConsoleColor&);
 
     // Reset
 public:
@@ -136,8 +146,8 @@ class ConsoleCommands {
 
 
 private:
-    const ConsoleCommands();
-    const ConsoleCommands(const ConsoleCommands&);
+    ConsoleCommands();
+    ConsoleCommands(ConsoleCommands&);
 
 public:
     static const string moveCursorToLineNColM(const uint8_t& n, const uint8_t& m);
